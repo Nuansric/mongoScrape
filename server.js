@@ -43,7 +43,7 @@ db.on("error", function(error) {
 
 // Once logged in to the db through mongoose, log a success message
 db.once("open", function() {
-    console.log("Mongoose connection successful.");
+    console.log("mongodb://heroku_g31lnw0h:g9mn7uf2ah95hgf7qob3r2r6na@ds147069.mlab.com:47069/heroku_g31lnw0h" || "Mongoose connection successful.");
 });
 
 require("./routes/routes.js")(app);
