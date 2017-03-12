@@ -200,15 +200,33 @@ var controller = {
     saveArticle: function(req, res) {
         console.log("inside save")
         var entry = new Article(req.body);
-        entry.save(function(err, doc) {
-            console.log("inside save");
+        Article.findOne({ "title": req.body.title }, function(error, data) {
             // Log any errors
-            if (err) {
-                console.log(err);
+            if (error) {
+                console.log(error);
             }
-            // Or log the doc
-            else {
-                res.redirect("/articles")
+            // Or send the doc to the browser as a json object
+            else if (data == null) {
+
+                console.log("inside null");
+
+
+                // Now, save that entry to the db
+                entry.save(function(err, doc) {
+                    console.log("inside save");
+                    // Log any errors
+                    if (err) {
+                        console.log(err);
+                    }
+                    // Or log the doc
+                    else {
+                        res.redirect("/articles");
+
+                    }
+                });
+
+            } else {
+                res.redirect("/articles");
             }
         });
     },
