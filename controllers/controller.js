@@ -42,7 +42,9 @@ var controller = {
 
                 var entry = new ArticleAll(result);
 
-                Article.findOne({ "title": result.title }, function(error, data) {
+                console.log(entry);
+
+                ArticleAll.findOne({ "title": result.title }, function(error, data) {
                     // Log any errors
                     if (error) {
                         console.log(error);
@@ -69,7 +71,7 @@ var controller = {
                             }
                             // Or log the doc
                             else {
-                                // console.log(doc);
+                                console.log(doc);
                             }
                         });
 
