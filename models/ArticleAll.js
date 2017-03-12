@@ -7,13 +7,13 @@ var Schema = mongoose.Schema;
 var ArticleAllSchema = new Schema({
     // title is a required string
     title: {
-        type: String,
-        required: true
+        type: String
+            // ,required: true
     },
     // link is a required string
     link: {
-        type: String,
-        required: true
+        type: String
+            // ,required: true
     }
 });
 

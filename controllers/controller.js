@@ -6,17 +6,13 @@ var Article = require("../models/Article.js");
 var ArticleAll = require("../models/ArticleAll.js");
 
 var controller = {
-
-    // createArticle: function(entry, cb) {
-    //     // Now, save that entry to the db
-    //     entry.save(function(err, doc) {
-    //        cb(err, doc)
-    //     });
-
-
-
+    // cb: function(res) {
+    //     res.redirect("/showAllArticle");
     // },
+    createArticle: function(res, cb) {
+        cb();
 
+    },
     scrapeArticle: function(req, res) {
 
         request('http://www.nytimes.com', function(error, response, html) {
@@ -42,7 +38,6 @@ var controller = {
 
                 var entry = new ArticleAll(result);
 
-                console.log(entry);
 
                 ArticleAll.findOne({ "title": result.title }, function(error, data) {
                     // Log any errors
@@ -54,13 +49,6 @@ var controller = {
 
                         console.log("inside null");
 
-                        // controller.createArticle(entry, function(err, doc) {
-
-                        //     if (err) {
-
-                        //     }
-
-                        // })
 
                         // Now, save that entry to the db
                         entry.save(function(err, doc) {
@@ -72,6 +60,7 @@ var controller = {
                             // Or log the doc
                             else {
                                 console.log(doc);
+
                             }
                         });
 
@@ -79,12 +68,12 @@ var controller = {
                 });
 
 
-            });
-            // Tell the browser that we finished scraping the text
-            res.redirect("/articlesAll");
-        });
+            })
 
 
+
+        })
+        res.render("success");
     },
 
     showAllArticle: function(req, res) {
