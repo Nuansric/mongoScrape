@@ -1,0 +1,37 @@
+ <div id="wrapper">
+      <h1>SAVE ARTICLES</h1>
+      {{#each article}}
+      <div style="border: 1px solid black; margin: 10px; padding: 10px;">
+      <div id="articles">
+        <h2>Title: {{this.title}}</h2>
+        <p>Link: <a href="{{this.link}}">{{this.link}}</a></p>
+
+      </div>
+      {{#if this.note}}
+       <div style="border: 1px solid black; margin: 10px; padding: 10px;">
+      <h2> Your Article Notes: </h2>
+      {{#each this.note}}
+      
+          <h3>Note Title: {{this.title}}</h3>
+          <p>Note Content: {{this.body}}</p>
+          <form action="/deleteNote/{{this._id}}" method="POST">
+          <button>DELETE NOTE</button>
+          </form>
+          <hr>
+  
+      {{/each}}
+      </div>
+      {{/if}}
+      <div id="notes">
+          <h2> Add Note </h2>
+          <form action="/articles/{{this._id}}" method="POST">
+          <label>Note Title:</label>
+          <input type"text" name="title">
+          <label>Note Content:</label>
+          <input type"text" name="body">
+          <button>Add Note</button>
+          </form>
+      </div>
+      </div>
+      {{/each}}
+    </div>
