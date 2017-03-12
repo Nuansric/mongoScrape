@@ -16,6 +16,6 @@ module.exports = function(app) {
     app.post("/articles/:id", controller.addNote);
     app.post("/deleteNote/:id", controller.deleteNote);
     app.post("/saveArticle", controller.saveArticle);
-
+    app.post("/deleteArticle/:id", controller.deleteArticle);
 
 }

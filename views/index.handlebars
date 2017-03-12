@@ -3,6 +3,9 @@
       {{#each article}}
       <div style="border: 1px solid black; margin: 10px; padding: 10px;">
       <div id="articles">
+          <form action="/deleteArticle/{{this._id}}" method="POST">
+          <button>DELETE ARTICLE</button>
+          </form>
         <h2>Title: {{this.title}}</h2>
         <p>Link: <a href="{{this.link}}">{{this.link}}</a></p>
 
@@ -32,6 +35,9 @@
           <button>Add Note</button>
           </form>
       </div>
-      </div>
+      <br>
+
+      
       {{/each}}
     </div>
+ </div>

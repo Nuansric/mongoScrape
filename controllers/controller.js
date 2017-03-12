@@ -211,7 +211,20 @@ var controller = {
                 res.redirect("/articles")
             }
         });
-    }
+    },
+
+    deleteArticle: function(req, res) {
+        console.log("remove");
+        Article.remove({ _id: req.params.id }, function(err) {
+            if (!err) {
+                res.redirect("/articles");
+            } else {
+                console.log(err);
+            }
+        });
+
+
+    },
 
 }
 
