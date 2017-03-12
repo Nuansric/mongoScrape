@@ -208,7 +208,7 @@ var controller = {
             }
             // Or log the doc
             else {
-                res.redirect("/articlesAll")
+                res.redirect("/articles")
             }
         });
     }
